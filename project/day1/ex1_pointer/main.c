@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 			memcpy(log,pHead,pTail-pHead+1);
 			log[pTail-pHead+1] = '\0';
 			printf("[%i]:%s\r\n",counter++,log);
+			free(log);
 		}
 	}
 	return 0;
