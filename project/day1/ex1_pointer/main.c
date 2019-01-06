@@ -36,8 +36,34 @@ Create 5/1/2019.
  */
 int parser(const char *input, char **ppHead, char **ppTail)
 {
+	
+	static int j=0;
+	static char *lastInput = NULL;
+	if(lastInput != input)
+	{
+		j =0; 
+	}
+	lastInput = (char*)input;
+	*ppHead = *ppTail = NULL;
+	for ( int i = j; i < strlen(input)+1; i++)
+	{
+		if( input[i] =='[') 
+		{
+			*ppHead = (char *)input+i+1;			 
+			for(j= i+1; j< strlen(input)+1; j++)
+			{
+				if(input[j] ==']')
+				{
+					*ppTail = (char *)input+j-1;
+					
+					return 0;
+				}	
+			}
+		}	 
+	}
 	// Add your code here
 	return -1;
+		
 }
 
 int main(int argc, char **argv)
